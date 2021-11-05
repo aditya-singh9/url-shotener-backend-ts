@@ -1,20 +1,24 @@
-import { Express, Response, Request } from "express";
+import { Express, Request, Response } from "express";
 import {
   createShortUrl,
-  getAnalytics,
   handleRedirect,
+  getAnalytics,
+  getShortUrl,
 } from "../controllers/shortUrl.controller";
-import validateResource from "../middleware/validateResource";
-import CreateShortUrlSchema from "../schema/CreateShortUrl.schema";
+import validateResourse from "../middleware/validateResource";
+import shortUrlSchema from "../schema/CreateShortUrl.schema";
 
 function routes(app: Express) {
-  app.get("/", (req: Request, res: Response) => {
-    return res.send("Working fine");
+  app.get("/healthcheck", (req: Request, res: Response) => {
+    return res.send("App is healthy");
   });
 
-  app.post("/api/url", validateResource(CreateShortUrlSchema), createShortUrl);
+  app.post("/api/url", validateResourse(shortUrlSchema), createShortUrl);
 
   app.get("/:shortId", handleRedirect);
+
+  app.get("/api/url/:shortId", getShortUrl);
+
   app.get("/api/analytics", getAnalytics);
 }
 
