@@ -8,7 +8,7 @@ import validateResource from "../middleware/validateResource";
 import CreateShortUrlSchema from "../schema/CreateShortUrl.schema";
 
 function routes(app: Express) {
-  app.get("/check", (req: Request, res: Response) => {
+  app.get("/", (req: Request, res: Response) => {
     return res.send("Working fine");
   });
 
