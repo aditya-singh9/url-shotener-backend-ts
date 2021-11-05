@@ -1,6 +1,7 @@
 import { Express, Response, Request } from "express";
 import {
   createShortUrl,
+  getAnalytics,
   handleRedirect,
 } from "../controllers/shortUrl.controller";
 import validateResource from "../middleware/validateResource";
@@ -14,6 +15,7 @@ function routes(app: Express) {
   app.post("/api/url", validateResource(CreateShortUrlSchema), createShortUrl);
 
   app.get("/:shortId", handleRedirect);
+  app.get("/api/analytics", getAnalytics);
 }
 
 export default routes;
