@@ -9,8 +9,8 @@ import validateResourse from "../middleware/validateResource";
 import shortUrlSchema from "../schema/CreateShortUrl.schema";
 
 function routes(app: Express) {
-  app.get("/healthcheck", (req: Request, res: Response) => {
-    return res.send("App is healthy");
+  app.get("/", (req: Request, res: Response) => {
+    return res.send("Working fine!");
   });
 
   app.post("/api/url", validateResourse(shortUrlSchema), createShortUrl);
