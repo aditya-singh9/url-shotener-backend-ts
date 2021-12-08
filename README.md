@@ -4,11 +4,13 @@
 
 <p align="center"><strong> Live demo <a href="https://www.limurl.ml/">here</a>! </strong></p>
 
+<p align="center"><strong> Frontend Repository <a href="https://github.com/aditya-singh9/url-shotener-frontend-ts">here</a>. </strong></p>
+
 ## Table of Contents
 
 - [Features](#features)
 - [Setup](#project-setup)
-- [Edit Content](#how-to-edit-content)
+- [Some important thing to setup](#some-important-things-to-setup)
 - [Author](#author)
 - [Contributing](#-contributing)
 - [License](#-license)
@@ -41,7 +43,7 @@ npm run dev
 npm run build
 ```
 
-## How to edit content
+## Some important things to setup
 
 This project uses MongoDB as the databse. So in order to run the project you must create a cluster in MondoDB. Once done, you hav to create a `.env` file and add the variables mentioned below.
 
