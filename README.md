@@ -10,7 +10,7 @@
 
 - [Features](#features)
 - [Setup](#project-setup)
-- [Edit Content](#some-important-things-to-setup)
+- [Some important thing to setup](#some-important-things-to-setup)
 - [Author](#author)
 - [Contributing](#-contributing)
 - [License](#-license)
