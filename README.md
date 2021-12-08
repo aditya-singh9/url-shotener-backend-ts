@@ -43,7 +43,7 @@ npm run dev
 npm run build
 ```
 
-## How to edit content
+## Some important things to setup
 
 This project uses MongoDB as the databse. So in order to run the project you must create a cluster in MondoDB. Once done, you hav to create a `.env` file and add the variables mentioned below.
 
