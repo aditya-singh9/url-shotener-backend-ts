@@ -4,6 +4,8 @@
 
 <p align="center"><strong> Live demo <a href="https://www.limurl.ml/">here</a>! </strong></p>
 
+<p align="center"><strong> Frontend Repository <a href="https://github.com/aditya-singh9/url-shotener-frontend-ts">here</a>. </strong></p>
+
 ## Table of Contents
 
 - [Features](#features)
