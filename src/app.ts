@@ -4,6 +4,9 @@ import routes from "./routes";
 import bodyParser from "body-parser";
 import connect from "./db";
 import cors from "cors";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import mongoSanitize from "express-mongo-sanitize";
 
 dotenv.config();
 const app = express();
@@ -12,6 +15,18 @@ app.use(cors());
 
 app.use(express.json());
 const port = process.env.PORT || 4000;
+
+//Security Middlewares
+app.use(helmet())
+
+app.use(mongoSanitize()) //Against NoSQL Query Injection
+
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 100,
+  message: "Too many requests from this IP. Please try again later!"
+})
+
 
 app.listen(port, () => {
   console.log(`Listening at https://localhost:${port}`);
