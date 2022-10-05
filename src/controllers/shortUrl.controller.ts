@@ -1,13 +1,16 @@
 import { Request, Response } from "express";
 import shortUrl from "../models/shortUrl.model";
 import analytics from "../models/analytics.model";
+import shortUrlSchema from "../validators/shortUrl.schema";
 
 export async function createShortUrl(req: Request, res: Response) {
   // Get the destination from the request body
-  const { destination } = req.body;
+  const { destination , shortId} = req.body;
+const result=await shortUrlSchema.validateAsync(req.body);
+console.log(result);
 
   // Create a shortUrl
-  const newUrl = await shortUrl.create({ destination });
+  const newUrl = await shortUrl.create({ destination, shortId });
 
   // Return the shortUrl
   return res.send(newUrl);
