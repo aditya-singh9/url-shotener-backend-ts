@@ -18,6 +18,7 @@
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^6.6.0",
     "helmet": "^6.0.0",
+    "joi": "^17.6.2",
     "mongoose": "^6.0.12",
     "nanoid": "^3.1.30",
     "yup": "^0.32.11"
