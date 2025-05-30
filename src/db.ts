@@ -13,6 +13,8 @@ async function connect() {
     console.log("DB connected");
   } catch (error) {
     console.log("Could not connect to db");
+    console.log(process.env.DB_USER)
+    console.log(process.env.DB_PASS)
     process.exit(1);
   }
 }
