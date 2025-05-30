@@ -5,11 +5,11 @@ import shortUrlSchema from "../validators/shortUrl.schema";
 
 export async function createShortUrl(req: Request, res: Response) {
   // Get the destination from the request body
-  const { destination , shortId} = req.body;
-const result=await shortUrlSchema.validateAsync(req.body);
-console.log(result);
+  const { destination, shortId } = req.body;
+  const result = await shortUrlSchema.validateAsync(req.body);
+  console.log(result);
 
-  // Create a shortUrl
+  // Create a shorturl
   const newUrl = await shortUrl.create({ destination, shortId });
 
   // Return the shortUrl

@@ -1,7 +1,7 @@
 import Joi from "joi";
 
 const shortUrlSchema=Joi.object({
-shortId: Joi.string().required(),
+shortId: Joi.string(),
 destination: Joi.string().required()
 
 });
