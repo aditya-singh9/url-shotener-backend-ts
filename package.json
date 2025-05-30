@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./dist/app.js",
     "dev": "nodemon ./src/app.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "setup": "npm install && npm run build"
   },
   "author": "Aditya Singh",
   "license": "ISC",
