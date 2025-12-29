@@ -1,45 +1,46 @@
 import express from "express";
 import * as dotenv from "dotenv";
 import routes from "./routes";
-import bodyParser from "body-parser";
 import connect from "./db";
 import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import mongoSanitize from "express-mongo-sanitize";
-import { Request, Response } from "express";
 
 dotenv.config();
 const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+
+app.use(
+  cors({
+    origin: "https://limurl.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+app.options("*", cors()); // 🔥 REQUIRED
+
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
+app.use(helmet());
+app.use(mongoSanitize());
+
+app.use(
+  rateLimit({
+    max: 100,
+    windowMs: 60 * 60 * 1000,
+    message: "Too many requests from this IP. Please try again later!",
+  })
+);
+
+
+routes(app);
 const port = process.env.PORT || 4000;
 
-//Security Middlewares
-app.use(helmet());
-
-app.use(mongoSanitize()); //Against NoSQL Query Injection
-
-const limiter = rateLimit({
-  max: 100,
-  windowMs: 60 * 60 * 100,
-  message: "Too many requests from this IP. Please try again later!",
-});
-
-app.all("/", function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
-
-app.get("/", (req: Request, res: Response) => {
-  res.sendStatus(200);
-});
-
 app.listen(port, () => {
-  console.log(`Listening at https://localhost:${port}`);
-  routes(app);
+  console.log(`Listening on port ${port}`);
   connect();
 });
